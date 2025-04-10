@@ -1,7 +1,135 @@
-
-
-.images img{
-
-    width: 200px;
-    height: 200px;
-}
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f3f6;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #232f3e;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav-left .logo {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .nav-center {
+    flex: 1;
+    max-width: 500px;
+    margin: 1rem;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+  }
+  
+  .nav-right {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-btn, .add-product-btn {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  
+  .nav-btn {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .nav-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .add-product-btn {
+    background-color: #ff9900;
+    color: #fff;
+  }
+  
+  .add-product-btn:hover {
+    background-color: #e88c00;
+  }
+  
+  /* Product Grid */
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  /* Product Card */
+  .card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 260px;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .card-body {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .card-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-body .price {
+    color: green;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+  }
+  
+  .card-body button {
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.3s;
+  }
+  
+  .card-body button:hover {
+    background-color: #005fa3;
+  }
+  

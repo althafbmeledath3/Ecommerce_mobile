@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MobileZone</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    
-    <a href="add.html">add product</a>
 
-    <script src="js/index.js"></script>
+    
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <h1 class="logo">📱 MobileZone</h1>
+    </div>
+    
+    <div class="nav-center">
+      <input type="text" placeholder="Search for mobiles..." class="search-input" />
+    </div>
+
+    <div class="nav-right">
+      <a href="login.html" class="nav-btn">Login</a>
+      <a href="signup.html" class="nav-btn">Signup</a>
+      <a href="add.html" class="add-product-btn">+ Add Product</a>
+    </div>
+  </nav>
+
+  <!-- Product Grid -->
+  <main class="product-grid" id="productGrid">
+    
+
+    <!-- <div class="card" id="card">
+      <img src="https://m.media-amazon.com/images/I/91W42b8YW+L._AC_UF1000,1000_QL80_.jpg" alt="Mobile Image" />
+      <div class="card-body">
+        <h3>Samsung Galaxy S24</h3>
+        <p class="price">₹79,999</p>
+        <button>View Details</button>
+      </div>
+    </div>
+
+    <div class="card" id="card">
+        <img src="https://m.media-amazon.com/images/I/91W42b8YW+L._AC_UF1000,1000_QL80_.jpg" alt="Mobile Image" />
+        <div class="card-body">
+          <h3>Samsung Galaxy S24</h3>
+          <p class="price">₹79,999</p>
+          <button>View Details</button>
+        </div>
+      </div> -->
+  
+    <!-- Add more cards dynamically -->
+  </main>
+
+  <a href="add.html">add mobile</a>
+
+  <script src="js/index.js"></script>
+
 </body>
 </html>

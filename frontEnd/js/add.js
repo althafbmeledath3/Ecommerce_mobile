@@ -23,13 +23,13 @@ let images = document.getElementById('image_display');
 
 //store the inner html of image dsiplay
 let str = ""
-let img_arr = []
+
 document.getElementById('images').addEventListener('change', async (e) => {
     const files = e.target.files;
     for (const file of files) {
         const base64 = await convertBase64(file);
         str+=`<img src=${base64}></img><br>`
-        img_arr.push(base64)
+        
 
     }
     
@@ -50,9 +50,15 @@ async function sendBackEnd() {
     let qty = document.getElementById('qty').value
     let color = document.getElementById('color').value
 
-    
+    const files = document.getElementById('images').files;
+    let image_arr = [];
 
-    let data = {name,brand,rom,ram,price,qty,color,img_arr}
+    for (const file of files) {
+        const base64 = await convertBase64(file);
+        image_arr.push(base64);
+    }
+
+    let data = {name,brand,rom,ram,price,qty,color,image_arr}
 
     // request from post api
     try{
@@ -77,7 +83,7 @@ async function sendBackEnd() {
 
     catch(error){
         console.log(error)
-        
+
     }
    
 
