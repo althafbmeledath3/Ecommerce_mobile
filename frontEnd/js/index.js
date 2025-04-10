@@ -21,7 +21,7 @@ async function loadData() {
       <div class="card-body">
         <h3>${element.name}</h3>
         <p class="price">₹${element.price}</p>
-        <button>View Details</button>
+        <a href="preview.html?id=${element._id}"><button>View Details</button></a>
       </div>
     </div>`
             

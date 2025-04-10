@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Preview - MobileZone</title>
+  <link rel="stylesheet" href="css/preview.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1 class="logo"><i class="fab fa-apple"></i> MobileZone</h1>
+    <div class="nav-right">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="#" class="nav-btn">Cart <i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </nav>
+
+  <!-- Product Preview Section -->
+  <section class="preview-container" id="preview-container">
+    
+    <!-- Thumbnails -->
+    <div class="thumbnail-section">
+      <img src="https://m.media-amazon.com/images/I/91W42b8YW+L._AC_UF1000,1000_QL80_.jpg" class="thumb-img" alt="Thumb 1">
+      <img src="https://m.media-amazon.com/images/I/71p7-bRcb1L._AC_UF894,1000_QL80_.jpg" class="thumb-img" alt="Thumb 2">
+      <img src="https://m.media-amazon.com/images/I/61xb8nM8j+L._AC_UF894,1000_QL80_.jpg" class="thumb-img" alt="Thumb 3">
+    </div>
+
+    <!-- Main Image -->
+    <div class="image-section">
+      <img src="https://m.media-amazon.com/images/I/91W42b8YW+L._AC_UF1000,1000_QL80_.jpg" alt="Mobile Image" id="preview-image">
+    </div>
+
+    <!-- Product Details -->
+    <div class="details-section">
+      <h2 id="preview-name">Samsung Galaxy S24</h2>
+      <p class="brand"><strong>Brand:</strong> Samsung</p>
+      <p class="specs"><strong>RAM:</strong> 8GB | <strong>ROM:</strong> 128GB</p>
+      <p class="colors"><strong>Available Colors:</strong> Black, Blue</p>
+      <p class="price" id="preview-price">₹79,999</p>
+
+      <div class="buttons">
+        <button class="buy-btn">Buy Now</button>
+        <button class="cart-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/preview.js"></script>
+</body>
+</html>
