@@ -29,8 +29,10 @@ document.getElementById('images').addEventListener('change', async (e) => {
     for (const file of files) {
         const base64 = await convertBase64(file);
         str+=`<img src=${base64}></img><br>`
-        
+        img_arr.push(base64)
+
     }
+    
     images.innerHTML = str
 });
 
@@ -47,6 +49,12 @@ async function sendBackEnd() {
     let price = document.getElementById('price')
     let qty = document.getElementById('qty')
     let color = document.getElementById('color')
+
+    let images = img_arr
+
+    let data = {name,brand,rom,ram,price,qty,color}
+
+    //req
 
 
     
