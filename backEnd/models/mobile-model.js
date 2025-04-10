@@ -7,12 +7,14 @@ const mobileSchema = new mongoose.Schema({
     brand:{type:String,required:true},
     rom:{type:String,required:true},
     ram:{type:String,required:true},
-    price:{type:String,required:true},
-    qty:{}
+    price:{type:Number,required:true},
+    qty:{type:Number,required:true},
+    color:{type:Array,required:true},
+    images:{type:Array,required:true}
    
 })
 
 
-export default mongoose.model.Users || mongoose.model("Users",userSchema)
+export default mongoose.model.Mobiles || mongoose.model("Mobiles",mobileSchema)
 
 

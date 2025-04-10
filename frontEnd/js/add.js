@@ -42,13 +42,13 @@ document.getElementById('images').addEventListener('change', async (e) => {
 
 async function sendBackEnd() {
 
-    let name = document.getElementById('mobile-name')
-    let brand = document.getElementById('brand')
-    let rom = document.getElementById('rom')
-    let ram = document.getElementById('ram')
-    let price = document.getElementById('price')
-    let qty = document.getElementById('qty')
-    let color = document.getElementById('color')
+    let name = document.getElementById('mobile-name').value
+    let brand = document.getElementById('brand').value
+    let rom = document.getElementById('rom').value
+    let ram = document.getElementById('ram').value
+    let price = document.getElementById('price').value
+    let qty = document.getElementById('qty').value
+    let color = document.getElementById('color').value
 
     
 
@@ -64,12 +64,20 @@ async function sendBackEnd() {
         }
 
         const response = await fetch('/api/add',options)
-        
+
+        if(response.status==201){
+            alert("Data Addded Successfully")
+        }
+        else{
+            alert("Please fill all the fields")
+            console.log(response.error)
+        }
 
     }
 
     catch(error){
         console.log(error)
+        
     }
    
 
