@@ -7,8 +7,8 @@ const mobileSchema = new mongoose.Schema({
     brand:{type:String,required:true},
     rom:{type:String,required:true},
     ram:{type:String,required:true},
-    price:{type:Number,required:true},
-    qty:{type:Number,required:true},
+    price:{type:String,required:true},
+    qty:{type:String,required:true},
     color:{type:Array,required:true},
     images:{type:Array,required:true}
    
