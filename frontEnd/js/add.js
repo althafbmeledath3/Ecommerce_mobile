@@ -50,11 +50,29 @@ async function sendBackEnd() {
     let qty = document.getElementById('qty')
     let color = document.getElementById('color')
 
-    let images = img_arr
+    
 
-    let data = {name,brand,rom,ram,price,qty,color}
+    let data = {name,brand,rom,ram,price,qty,color,img_arr}
 
-    //req
+    // request from post api
+    try{
+
+        let options = {
+            headers:{"Content-Type":"application/json"},
+            method:"POST",
+            body:JSON.stringify(data)
+        }
+
+        const response = await fetch('/api/add',options)
+        
+
+    }
+
+    catch(error){
+        console.log(error)
+    }
+   
+
 
 
     
