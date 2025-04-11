@@ -1,29 +1,32 @@
-<!-- cart.html (make sure this matches) -->
+<!-- cart.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cart Page</title>
-  <style>
-    body { font-family: Arial; padding: 20px; }
-    .cart-item {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-    .cart-item img { width: 80px; margin-right: 20px; }
-    .cart-item-info { flex: 1; }
-    .cart-controls button { margin: 0 5px; }
-  </style>
+  <title>Your Cart - MobileZone</title>
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-  <h1>🛒 Your Cart</h1>
-  <div id="cartContainer"></div>
-  <h2>Total: ₹<span id="totalAmount">0</span></h2>
+  <nav class="navbar">
+    <h1 class="logo"><i class="fab fa-apple"></i> MobileZone</h1>
+    <div class="nav-right">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="#" class="nav-btn">Cart <i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </nav>
+
+  <main class="cart-wrapper">
+    <h2>Your Cart</h2>
+    <div id="cartContainer"></div>
+    <h3 class="total-label">Total: ₹<span id="totalAmount">0</span></h3>
+
+    <h3 class="total-label">Total: ₹<span id="totalAmount">0</span></h3>
+<button class="checkout-btn" onclick="deleteCart()">🛒 Proceed to Checkout</button>
+
+  </main>
 
   <script src="js/cart.js"></script>
 </body>

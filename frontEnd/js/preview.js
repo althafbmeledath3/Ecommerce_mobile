@@ -1,4 +1,4 @@
-import { response } from "express";
+// import { response } from "express";
 
 
 
@@ -19,6 +19,8 @@ let total = 0
     try {
       const response = await fetch(`/api/preview/${mobileId}`);
       const data = await response.json();
+
+     
       let str = ""
       data.color.forEach((item)=>{
         str+=`${item.color} Quantity ${item.quantity}, `
@@ -128,45 +130,58 @@ async function delete_data(id){
 
 
 
-async function buyNow(id){
+async function buyNow(id) {
+
+  try {
+    // Load one item
+    const response1 = await fetch(`/api/loadOne/${id}`);
+    if (!response1.ok) throw new Error("Failed to load product");
+
+    const data = await response1.json();
+
+    let selected_color = document.getElementById('colors').value;
 
 
-  try{
+    let qty;
+    data.color.forEach((item)=>{
+      if(item.color==selected_color){
+        qty=item.quantity
+      }
+    })
 
-    //load the one data
-    const response1 = await fetch(`/api/loadOne/${id}`)
     
-    const data = await response1.json()
-    
-    let name = data.name
-    let price = data.price
-    let selected_color = document.getElementById('colors').value
-    
-    let cart_data = {name,price,selected_color}
-    
-    console.log(cart_data)
-    
-    let options = {
-      headers:{"Content-Type":"application/json"},
-      method:"POST",
-      body:JSON.stringify(cart_data)
+
+    let name = data.name;
+    let price = data.price;
+    let brand = data.brand
+    let ram = data.ram
+    let image = data.image_arr[0]
+   
+
+    let cart_data = { image,name,brand, ram, price,selected_color,qty };
+
+    console.log("Cart Data to send:", cart_data);
+
+    const options = {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(cart_data),
+    };
+
+    const cart_items = await fetch('/api/addCart', options);
+
+    if (cart_items.status === 200) {
+      alert("Item Added to cart");
+      setTimeout(() => {
+        window.location.href = "/cart.html";
+      }, 100);
+    } else {
+      const errData = await cart_items.text(); // might not be JSON
+      console.error("Add to Cart Failed:", errData);
+      alert("Error Adding Item to Cart");
     }
-    
-    const cart_items = await fetch('/api/addCart',options)
-    
-    if(cart_items.status==200){
-      alert("Item Added to cart")
-    }
-    else{
-      alert("Error Adding Item to Cart")
-    }
-    
-    // window.location.href = "/cart.html"
+  } catch (err) {
+    console.error("Error in buyNow():", err);
+    alert("Something went wrong. Please try again.");
   }
-  
-  catch(err){
-    console.log(err)
-    alert(response.error)
-  }
-  
 }
