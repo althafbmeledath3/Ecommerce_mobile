@@ -3,7 +3,6 @@ import express from "express"
 import Connection from "./connection.js"
 import path, { dirname,join } from 'path'
 import url from "url"
-import { log } from "console"
 
 import mobile_routes from "./router/mobile-routes.js"
 

@@ -42,14 +42,14 @@ const mobileId = urlParams.get('id');
               <button class="menu-btn delete" onClick='delete_data("${mobileId}")' >Delete</button>
             </div>
           </div>
-          <img src=${data.image_arr[1]} alt="Mobile Image" id="preview-image">
+          <img src=${data.image_arr[0]} alt="Mobile Image" id="preview-image">
         </div>
   
         <div class="details-section">
           <h2 id="preview-name">${data.name}</h2>
           <p class="brand"><strong>Brand:</strong> ${data.brand}</p>
           <p class="specs"><strong>RAM:</strong> ${data.ram} | <strong>ROM:</strong>${data.rom}</p>
-          <p class="colors"><strong>Available Colors:</strong> ${str}</p>
+          <p class="colors"><strong>Available Colors:</strong> ${str.slice(0, -2)}</p>
           <p class="price" id="preview-price">₹79,999</p>
   
           <div class="buttons">
@@ -113,3 +113,4 @@ async function delete_data(id){
 
 
 
+console.log()
