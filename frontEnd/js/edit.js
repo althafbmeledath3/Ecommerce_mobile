@@ -3,6 +3,8 @@ const mobileId = urlParams.get('id');
 let images = document.getElementById('image_display');
 
 let color = [];
+let image = ""
+let image_arr = []
 
     function addColor() {
       const name = document.getElementById("colorName").value.trim();
@@ -48,7 +50,10 @@ async function loadData() {
   const response = await fetch(`/api/loadOne/${mobileId}`);
   const data = await response.json();
 
-  console.log(data);
+  data.image_arr.forEach((item)=>{
+    image_arr.push(item)
+  })
+  console.log("image array",image_arr)
 
   // Fill inputs
   document.getElementById('mobile-name').value = data.name;
@@ -56,8 +61,13 @@ async function loadData() {
   document.getElementById('rom').value = data.rom;
   document.getElementById('ram').value = data.ram;
   document.getElementById('price').value = data.price;
-  images.innerHTML = `<img src=${data.image_arr[0]}></img>`
+  // images.innerHTML = `<img src=${data.image_arr[0]}></img>`
+  let str = ''
+  data.image_arr.forEach((item)=>{
 
+    str+=`<img src=${item}></img>`
+  })
+  images.innerHTML = str
   // Load color data
   if (data.color && Array.isArray(data.color)) {
     color = data.color; // 
@@ -114,14 +124,15 @@ function updateColorList() {
 }
 
 
-
 //store the inner html of image dsiplay
 let str = ""
 
 document.getElementById('images').addEventListener('change', async (e) => {
     const files = e.target.files;
+    image_arr=[]
     for (const file of files) {
         const base64 = await convertBase64(file);
+        image_arr.push(base64)
         str+=`<img src=${base64}></img><br>`
         
 
@@ -141,18 +152,21 @@ async function sendBackEnd(e) {
     let ram = document.getElementById('ram').value;
     let price = document.getElementById('price').value;
   
-    const files = document.getElementById('images').files;
-    let image_arr = [];
-  
-    for (const file of files) {
-      const base64 = await convertBase64(file);
-      image_arr.push(base64);
-    }
-  
+    // const files = document.getElementById('images').files;
+    
+    
+    
+    // for (const file of files) {
+    //   const base64 = await convertBase64(file);
+    //   image_arr.push(base64);
+    // }
+
+    console.log("image",image_arr)
+    console.log(color)
     // 'color' is already populated globally
     let data = { name, brand, rom, ram, price, color, image_arr };
 
-    console.log(data)
+
     try {
       let options = {
         headers: { "Content-Type": "application/json" },
@@ -165,6 +179,7 @@ async function sendBackEnd(e) {
       console.log(response)
       if (response.status == 201) {
         alert("Data Updated Successfully");
+        window.location.href = "/"
       } else {
         alert("Please fill all the fields");
        

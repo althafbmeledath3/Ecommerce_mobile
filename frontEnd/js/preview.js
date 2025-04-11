@@ -17,14 +17,19 @@ const mobileId = urlParams.get('id');
     try {
       const response = await fetch(`/api/preview/${mobileId}`);
       const data = await response.json();
-  
+      let str = ""
+      data.color.forEach((item)=>{
+        str+=`${item.color} Quantity ${item.quantity}, `
+      })
+
+      console.log(str)
       let container = document.getElementById('preview-container');
   
       container.innerHTML = `
         <div class="thumbnail-section">
-          <img src="https://m.media-amazon.com/images/I/91W42b8YW+L._AC_UF1000,1000_QL80_.jpg" class="thumb-img" alt="Thumb 1">
-          <img src="https://m.media-amazon.com/images/I/71p7-bRcb1L._AC_UF894,1000_QL80_.jpg" class="thumb-img" alt="Thumb 2">
-          <img src="https://m.media-amazon.com/images/I/61xb8nM8j+L._AC_UF894,1000_QL80_.jpg" class="thumb-img" alt="Thumb 3">
+          <img src=${data.image_arr[0]} class="thumb-img" alt="Thumb 1">
+          <img src=${data.image_arr[1]} class="thumb-img" alt="Thumb 2">
+          <img src=${data.image_arr[2]} class="thumb-img" alt="Thumb 3">
         </div>
         
         <div class="image-section">
@@ -34,17 +39,17 @@ const mobileId = urlParams.get('id');
             </div>
             <div class="menu-dropdown" id="menu-dropdown">
               <a href="edit.html?id=${mobileId}"><button class="menu-btn">Edit</button></a>
-              <button class="menu-btn delete">Delete</button>
+              <button class="menu-btn delete" onClick='delete_data("${mobileId}")' >Delete</button>
             </div>
           </div>
-          <img src="https://m.media-amazon.com/images/I/91W42b8YW+L._AC_UF1000,1000_QL80_.jpg" alt="Mobile Image" id="preview-image">
+          <img src=${data.image_arr[1]} alt="Mobile Image" id="preview-image">
         </div>
   
         <div class="details-section">
-          <h2 id="preview-name">Samsung Galaxy S24</h2>
-          <p class="brand"><strong>Brand:</strong> Samsung</p>
-          <p class="specs"><strong>RAM:</strong> 8GB | <strong>ROM:</strong> 128GB</p>
-          <p class="colors"><strong>Available Colors:</strong> Black, Blue</p>
+          <h2 id="preview-name">${data.name}</h2>
+          <p class="brand"><strong>Brand:</strong> ${data.brand}</p>
+          <p class="specs"><strong>RAM:</strong> ${data.ram} | <strong>ROM:</strong>${data.rom}</p>
+          <p class="colors"><strong>Available Colors:</strong> ${str}</p>
           <p class="price" id="preview-price">₹79,999</p>
   
           <div class="buttons">
@@ -83,6 +88,25 @@ const mobileId = urlParams.get('id');
 
 previewLoad()
 
+
+async function delete_data(id){
+  
+  try{
+
+    const response = await fetch(`/api/delete/${id}`)
+    const data = response.json()
+
+    if(response.status==200){
+      alert("Data Deleted Succesfully")
+      window.location.href = "/"
+    }
+  }
+  catch(err){
+
+    alert("Unable to delete Data ,Server Error")
+    console.log(err)
+  }
+}
 
 
 

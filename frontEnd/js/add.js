@@ -114,6 +114,7 @@ async function sendBackEnd(e) {
         const base64 = await convertBase64(file);
         image_arr.push(base64);
     }
+    image_arr.reverse()
 
     let data = {name,brand,rom,ram,price,color,image_arr}
 
@@ -130,6 +131,7 @@ async function sendBackEnd(e) {
 
         if(response.status==201){
             alert("Data Addded Successfully")
+            window.location.href = "/"
         }
         else{
             alert("Please fill all the fields")
@@ -142,11 +144,7 @@ async function sendBackEnd(e) {
         console.log(error)
 
     }
-   
-
-
-
-    
+     
 }
 
 
