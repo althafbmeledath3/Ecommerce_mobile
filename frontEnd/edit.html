@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Page</title>
+  <link rel="stylesheet" href="css/edit.css">
+</head>
+<body> 
+
+  <div class="wrapper">
+    <form onsubmit="sendBackEnd(event)">
+      <label for="mobile-name">Enter the Mobile Name:</label>
+      <input type="text" id="mobile-name" name="mobile-name" required><br>
+
+      <label for="brand">Enter the Mobile Brand:</label>
+      <input type="text" id="brand" name="brand" required><br>
+
+      <label for="rom">Enter the Device Rom:</label>
+      <input type="text" id="rom" name="rom" required><br>
+
+      <label for="ram">Enter the Device Ram:</label>
+      <input type="text" id="ram" name="ram" required><br>
+
+      <label for="price">Enter the Price:</label>
+      <input type="text" id="price" name="price" required><br>
+
+      <!-- <label for="qty">Enter Total Quantity Available:</label>
+      <input type="text" id="qty" name="qty" required><br> -->
+
+      <!-- Dynamic Color Section -->
+      <label>Add Color & Quantity:</label><br>
+      <input type="text" id="colorName" placeholder="Enter color name (e.g. Blue)">
+      <input type="number" id="colorQty" placeholder="Qty" min="1">
+      <button type="button" onclick="addColor()">Add Color</button>
+
+      <ul id="colorList"></ul>
+
+      <!-- Hidden input to collect all colors -->
+      <input type="hidden" name="colorData" id="colorData">
+
+      <label for="images">Upload the Device Images:</label>
+      <input type="file" id="images" name="images" multiple><br>
+
+      <button type="submit">Submit</button>
+
+      <div class="images" id="image_display"></div>
+    </form>
+  </div>
+
+  <script src="js/edit.js"></script>
+</body>
+</html>
