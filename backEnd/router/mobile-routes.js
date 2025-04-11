@@ -1,6 +1,7 @@
 import express from "express"
 
 import { addMobile,loadMobile,previewLoad,load_one,edit,delete_data } from "../controllers/mobile-controller.js"
+import { addCart } from "../controllers/cart-controller.js"
 
 
 
@@ -18,5 +19,6 @@ mobile_routes.post('/edit/:id',edit)
 
 mobile_routes.get('/delete/:id',delete_data)
 
+mobile_routes.post('/addCart',addCart)
 
 export default mobile_routes

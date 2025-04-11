@@ -1,0 +1,30 @@
+<!-- cart.html (make sure this matches) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart Page</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .cart-item img { width: 80px; margin-right: 20px; }
+    .cart-item-info { flex: 1; }
+    .cart-controls button { margin: 0 5px; }
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Your Cart</h1>
+  <div id="cartContainer"></div>
+  <h2>Total: ₹<span id="totalAmount">0</span></h2>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>

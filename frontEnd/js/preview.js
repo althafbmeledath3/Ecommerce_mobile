@@ -1,3 +1,4 @@
+import { response } from "express";
 
 
 
@@ -5,6 +6,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const mobileId = urlParams.get('id');
 
+let total = 0
 
 // document.querySelectorAll('.thumb-img').forEach(img => {
 //     img.addEventListener('mouseenter', () => {
@@ -20,6 +22,16 @@ const mobileId = urlParams.get('id');
       let str = ""
       data.color.forEach((item)=>{
         str+=`${item.color} Quantity ${item.quantity}, `
+      })
+
+      //color
+      let color_str = ""
+      
+      data.color.forEach((item)=>{
+        color_str+=`
+        <option value="${item.color}">${item.color}</option>
+        `
+        total+=item.quantity
       })
 
       console.log(str)
@@ -50,11 +62,17 @@ const mobileId = urlParams.get('id');
           <p class="brand"><strong>Brand:</strong> ${data.brand}</p>
           <p class="specs"><strong>RAM:</strong> ${data.ram} | <strong>ROM:</strong>${data.rom}</p>
           <p class="colors"><strong>Available Colors:</strong> ${str.slice(0, -2)}</p>
-          <p class="price" id="preview-price">₹79,999</p>
+          <label for="colors">Choose Color:</label>
+          <select id="colors">
+          ${color_str}
+           </select>
+           <p class="price">In Stock : ${total}</p>
+
+          <p class="price" id="preview-price">₹${data.price}</p>
   
           <div class="buttons">
-            <button class="buy-btn">Buy Now</button>
-            <button class="cart-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+            <button class="buy-btn"  >Buy Now</button>
+            <button class="cart-btn" onClick='buyNow("${data._id}")'><i class="fas fa-cart-plus"></i> Add to Cart</button>
           </div>
         </div>
       `;
@@ -110,7 +128,45 @@ async function delete_data(id){
 
 
 
+async function buyNow(id){
 
 
+  try{
 
-console.log()
+    //load the one data
+    const response1 = await fetch(`/api/loadOne/${id}`)
+    
+    const data = await response1.json()
+    
+    let name = data.name
+    let price = data.price
+    let selected_color = document.getElementById('colors').value
+    
+    let cart_data = {name,price,selected_color}
+    
+    console.log(cart_data)
+    
+    let options = {
+      headers:{"Content-Type":"application/json"},
+      method:"POST",
+      body:JSON.stringify(cart_data)
+    }
+    
+    const cart_items = await fetch('/api/addCart',options)
+    
+    if(cart_items.status==200){
+      alert("Item Added to cart")
+    }
+    else{
+      alert("Error Adding Item to Cart")
+    }
+    
+    // window.location.href = "/cart.html"
+  }
+  
+  catch(err){
+    console.log(err)
+    alert(response.error)
+  }
+  
+}
